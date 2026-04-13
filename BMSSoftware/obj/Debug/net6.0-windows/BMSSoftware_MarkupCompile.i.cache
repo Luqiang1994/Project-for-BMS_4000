@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\GitHubWorkSpace\Project-for-BMS_4000\BMSSoftware\obj\Debug\net6.0-windows\
+D:\GitHub_Projects\TempPressMoveControl\BMSSoftware\obj\Debug\net6.0-windows\
 BMSSoftware
 none
 false
-TRACE;DEBUG;NET;NET6_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-D:\GitHubWorkSpace\Project-for-BMS_4000\BMSSoftware\App.xaml
+TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+D:\GitHub_Projects\TempPressMoveControl\BMSSoftware\App.xaml
 5-921854647
 
 23-1481345307
-19760883532
+197-2124498405
 ControlStyles.xaml;OwnUserControls\PasswordInputDialog.xaml;Views\CommunityParamsView.xaml;Views\MainWindow.xaml;Views\StoredEnergy.xaml;
 
-False
+True
 

@@ -59,7 +59,7 @@
                             <TextBlock Text="通道号:" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="2"/>
-                            <TextBlock Text="验收码:0x" Foreground="White"
+                            <TextBlock Text="验收码:0x1" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="3"/>
                             <TextBlock Text="屏蔽码:0x" Foreground="White"

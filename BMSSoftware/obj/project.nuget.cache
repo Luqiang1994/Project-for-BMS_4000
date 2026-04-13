@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "WpALcSw6S8Y=",
+  "dgSpecHash": "p/S+Hc+0Sgbphl+C9/5LtDucrZTkjfPBPv/OdhBW05q8WQ4RCKBSc3RNpFq4apXsPop4M4Q+dwddvXwDunhezQ==",
   "success": true,
-  "projectFilePath": "D:\\GitHubWorkSpace\\Project-for-BMS_4000\\BMSSoftware\\BMSSoftware.csproj",
+  "projectFilePath": "D:\\GitHub_Projects\\TempPressMoveControl\\BMSSoftware\\BMSSoftware.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\LQ\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
-    "C:\\Users\\LQ\\.nuget\\packages\\handycontrol\\3.5.1\\handycontrol.3.5.1.nupkg.sha512",
-    "C:\\Users\\LQ\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.135\\microsoft.xaml.behaviors.wpf.1.1.135.nupkg.sha512",
-    "C:\\Users\\LQ\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
-    "C:\\Users\\LQ\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.1.0\\system.runtime.compilerservices.unsafe.6.1.0.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\handycontrol\\3.5.1\\handycontrol.3.5.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.135\\microsoft.xaml.behaviors.wpf.1.1.135.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.1.0\\system.runtime.compilerservices.unsafe.6.1.0.nupkg.sha512"
   ],
   "logs": []
 }
