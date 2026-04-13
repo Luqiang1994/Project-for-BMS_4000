@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BAU>
+	<BAU01 帧ID="0xA">
+		<BPU01 帧ID="0x10">
+		</BPU01>
+		<BPU02 帧ID="0x20">
+		</BPU02>
+		<BPU03 帧ID="0x30">
+		</BPU03>
+		<BPU04 帧ID="0x40">
+		</BPU04>
+		<BPU05 帧ID="0x50">
+		</BPU05>
+		<BPU06 帧ID="0x60">
+		</BPU06>
+		<BPU07 帧ID="0x70">
+		</BPU07>
+		<BPU08 帧ID="0x80">
+		</BPU08>
+		<BPU09 帧ID="0x90">
+		</BPU09>
+		<BPU10 帧ID="0x0a">
+		</BPU10>
+	</BAU01>
+
+	<BAU02 帧ID="0xB">
+		<BPU01 帧ID="0x10">
+		</BPU01>
+		<BPU02 帧ID="0x20">
+		</BPU02>
+		<BPU03 帧ID="0x30">
+		</BPU03>
+		<BPU04 帧ID="0x40">
+		</BPU04>
+		<BPU05 帧ID="0x50">
+		</BPU05>
+		<BPU06 帧ID="0x60">
+		</BPU06>
+		<BPU07 帧ID="0x70">
+		</BPU07>
+		<BPU08 帧ID="0x80">
+		</BPU08>
+		<BPU09 帧ID="0x90">
+		</BPU09>
+		<BPU10 帧ID="0x0a">
+		</BPU10>
+	</BAU02>
+</BAU>
+
+

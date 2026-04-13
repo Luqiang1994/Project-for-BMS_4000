@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="fonts\iconfont.ttf" />
+    <None Remove="fonts\iconfont1.ttf" />
+    <None Remove="fonts\iconfont2.ttf" />
+    <None Remove="images\buttonImage.png" />
+    <None Remove="images\centerImage.png" />
+    <None Remove="images\drop.png" />
+    <None Remove="images\img3d.png" />
+    <None Remove="images\leftback.png" />
+    <None Remove="images\leftImage.png" />
+    <None Remove="images\leftImageSub.png" />
+    <None Remove="images\rightImage.png" />
+    <None Remove="images\shutdown_def.png" />
+    <None Remove="images\shutdown_mo.png" />
+    <None Remove="images\timeback.png" />
+    <None Remove="images\topback.png" />
+    <None Remove="images\topImage.png" />
+    <None Remove="images\vs.jpg" />
+    <None Remove="images\中部选择栏选中-1.png" />
+    <None Remove="images\中部选择栏选中-2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="HandyControl" Version="3.5.1" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="fonts\iconfont.ttf" />
+    <Resource Include="fonts\iconfont1.ttf" />
+    <Resource Include="fonts\iconfont2.ttf" />
+    <Resource Include="images\buttonImage.png" />
+    <Resource Include="images\centerImage.png" />
+    <Resource Include="images\drop.png" />
+    <Resource Include="images\img3d.png" />
+    <Resource Include="images\leftback.png" />
+    <Resource Include="images\leftImage.png" />
+    <Resource Include="images\leftImageSub.png" />
+    <Resource Include="images\rightImage.png" />
+    <Resource Include="images\shutdown_def.png" />
+    <Resource Include="images\shutdown_mo.png" />
+    <Resource Include="images\timeback.png" />
+    <Resource Include="images\topback.png" />
+    <Resource Include="images\topImage.png" />
+    <Resource Include="images\vs.jpg" />
+    <Resource Include="images\中部选择栏选中-1.png" />
+    <Resource Include="images\中部选择栏选中-2.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,671 @@
+﻿<Page x:Class="BMSSoftware.Views.StoredEnergy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BMSSoftware.Views"
+      xmlns:help ="clr-namespace:BMSSoftware.Helpers"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1200"
+      Title="StoredEnergy">
+    <Page.Resources>
+        <!-- 定义 TabControl 样式 -->
+        <Style TargetType="TabControl">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Tab Headers -->
+                            <TabPanel Grid.Row="0"
+                                      IsItemsHost="True"
+                                      Panel.ZIndex="1"/>
+
+                            <!-- Content Area with Animation -->
+                            <Border Grid.Row="1"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter x:Name="PART_SelectedContentHost"
+                                                  ContentSource="SelectedContent">
+                                    <ContentPresenter.RenderTransform>
+                                        <!-- 关键修复：明确命名 TranslateTransform -->
+                                        <TranslateTransform x:Name="contentTransform"/>
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="TabControl.SelectionChanged">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                         Duration="0:0:0.6"
+                                         From="0"
+                                         To="1" />
+                                         <!--关键修复：使用完整属性路径--> 
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="contentTransform"
+                                            Storyboard.TargetProperty="X"
+                                            From="300" To="0"
+                                            Duration="0:0:0.6"
+                                            DecelerationRatio="0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 定义 TabItem 样式 -->
+        <Style TargetType="TabItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="border" 
+                                Background="LightGray"
+                                BorderBrush="DarkGray"
+                                BorderThickness="1,1,1,0"
+                                CornerRadius="4,4,0,0"
+                                Padding="10,2">
+                            <ContentPresenter x:Name="content"
+                                              ContentSource="Header"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--多个参数数转化器-->
+        <help:MultiValueConverter x:Key="MultiValueConverter"/>
+
+        <!--selectedIndexToBooleanConverter选项索引转bool-->
+        <help:selectedIndexToBooleanConverter x:Key="selectedIndexToBooleanConverter"/>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--左侧下拉列表-->
+        <StackPanel Grid.Row="1" Margin="10">
+            <RadioButton Style="{StaticResource RadioBtnMenuStyle}" 
+                         Command="{Binding ChangeTabControlCommand}"
+                         CommandParameter="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" Height="50" Width="200">
+                    <TextBlock Margin="20 0 0 0" Text="&#x1017a;" FontFamily="../fonts/#iconfont" VerticalAlignment="Center" FontSize="25" Foreground="White" />
+                    <StackPanel Margin="15 0 0 0" VerticalAlignment="Center">
+                        <TextBlock Text="数据监控" FontSize="20" Foreground="White"/>
+                        <TextBlock Text="Data monitoring" FontSize="15" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton Style="{StaticResource RadioBtnMenuStyle}" 
+                         Command="{Binding ChangeTabControlCommand}"
+                         CommandParameter="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" Height="50" Width="200">
+                    <TextBlock Margin="20 0 0 0" Text="&#xe6b4;" FontFamily="../fonts/#iconfont" VerticalAlignment="Center" FontSize="25" Foreground="White" />
+                    <StackPanel Margin="15 0 0 0" VerticalAlignment="Center">
+                        <TextBlock Text="参数标定" FontSize="20" Foreground="White"/>
+                        <TextBlock Text="Volt Temp" FontSize="15" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton Style="{StaticResource RadioBtnMenuStyle}" 
+                         Command="{Binding ChangeTabControlCommand}"
+                         CommandParameter="2">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" Height="50" Width="200">
+                    <TextBlock Margin="20 0 0 0" Text="&#xe648;" FontFamily="../fonts/#iconfont" VerticalAlignment="Center" FontSize="25" Foreground="White" />
+                    <StackPanel Margin="15 0 0 0" VerticalAlignment="Center">
+                        <TextBlock Text="EOL测试" FontSize="20" Foreground="White"/>
+                        <TextBlock Text="Volt Temp" FontSize="15" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton Style="{StaticResource RadioBtnMenuStyle}" 
+                         Command="{Binding ChangeTabControlCommand}"
+                         CommandParameter="3">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" Height="50" Width="200">
+                    <TextBlock Margin="20 0 0 0" Text="&#xe642;" FontFamily="../fonts/#iconfont" VerticalAlignment="Center" FontSize="25" Foreground="White" />
+                    <StackPanel Margin="15 0 0 0" VerticalAlignment="Center">
+                        <TextBlock Text="强控模式" FontSize="20" Foreground="White"/>
+                        <TextBlock Text="Volt Temp" FontSize="15" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton Style="{StaticResource RadioBtnMenuStyle}" 
+                         Command="{Binding ChangeTabControlCommand}"
+                         CommandParameter="4">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" Height="50" Width="200">
+                    <TextBlock Margin="20 0 0 0" Text="&#xe646;" FontFamily="../fonts/#iconfont" VerticalAlignment="Center" FontSize="25" Foreground="White" />
+                    <StackPanel Margin="15 0 0 0" VerticalAlignment="Center">
+                        <TextBlock Text="换包维护" FontSize="20" Foreground="White"/>
+                        <TextBlock Text="Volt Temp" FontSize="15" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </RadioButton>
+        </StackPanel>
+      
+        <TabControl Grid.Column="1" Background="Transparent"
+                    BorderThickness="0"
+                    SelectedIndex="{Binding PageIndex}"
+                    >
+            
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Background="Transparent" 
+                              BorderThickness="0" 
+                              ItemsSource="{Binding DBCFileModels}"
+                              AutoGenerateColumns="False"
+                              AlternationCount="2"
+                              ColumnHeaderStyle="{StaticResource DgCloumnHeader}"
+                              SelectedIndex="{Binding CurSeletcIndex}"
+                              RowStyle="{StaticResource DataRowStyle}"
+                              SelectionChanged="DataGrid_SelectionChanged">
+                        
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="消息名称" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="消息ID" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="数据长度" Binding="{Binding DLC,Mode=TwoWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Grid.Column="1"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              AutoGenerateColumns="False"
+                              ColumnHeaderStyle="{StaticResource DgCloumnHeader}"
+                              ItemsSource="{Binding SignalInfos}"
+                              RowStyle="{StaticResource DataRowStyle}"
+                              SelectionChanged="DataGrid_SelectionChanged">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="信号名称" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="起始位" Binding="{Binding StartBit}"/>
+                            <DataGridTextColumn Header="信号长度" Binding="{Binding Length}"/>
+                            <DataGridTextColumn Header="信号值" Binding="{Binding Value}"/>
+                            <DataGridTextColumn Header="单位" Binding="{Binding Unit}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Visibility="Collapsed">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="参数标定"
+                               FontSize="40"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <TextBlock Text="均衡控制标定"
+                                   Foreground="White"
+                                   FontSize="40"
+                                   FontWeight="Bold"/>
+                        
+                        <Button Content="执行标定"
+                                Style="{StaticResource IndustrialButtonStyle}"
+                                Height="40"
+                                Margin="40 0 0 0"
+                                Command="{Binding CalbIOCommand}"/>
+                        
+                    </StackPanel>
+
+                    <DataGrid Grid.Row="1"
+                              Grid.Column="0"
+                              ColumnHeaderStyle="{StaticResource DgCloumnHeader}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              RowStyle="{StaticResource DataRowStyle}"
+                              Margin="0 0 10 0"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding SetInfos}"
+                              SelectedIndex="{Binding CurCalbSelectIndex}"
+                              SelectionChanged="DataGrid_SelectionChanged">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="参数项" Binding="{Binding _signalComment}"/>
+                            <DataGridTextColumn Header="值" Binding="{Binding _TX,
+                                UpdateSourceTrigger=LostFocus}"/>
+                            <DataGridTextColumn Header="单位" Binding="{Binding _Unit}"/>
+                            <DataGridTemplateColumn Header="写入">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="写  入" Style="{StaticResource IndustrialButtonStyle}"
+                                                FontSize="9"
+                                                Command="{Binding DataContext.SysParamCalbCommand,RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="取消">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="取  消" Style="{StaticResource IndustrialButtonStyle}"
+                                                FontSize="9"
+                                                Command="{Binding CancelSysParamCalbCommand}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Grid.Row="1"
+                              Grid.Column="1"
+                              ColumnHeaderStyle="{StaticResource DgCloumnHeader}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              RowStyle="{StaticResource DataRowStyle}"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding BalanceControlModes}"
+                              SelectionChanged="DataGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="字节1" Binding="{Binding Byte1 ,UpdateSourceTrigger=PropertyChanged}" Width="62"/>
+                            <DataGridTextColumn Header="字节2" Binding="{Binding Byte2,UpdateSourceTrigger=PropertyChanged}" Width="64"/>
+                            <DataGridTextColumn Header="字节3" Binding="{Binding Byte3,UpdateSourceTrigger=PropertyChanged}" Width="64"/>
+                            <DataGridTextColumn Header="字节4" Binding="{Binding Byte4,UpdateSourceTrigger=PropertyChanged}" Width="64"/>
+                            <DataGridTextColumn Header="字节5" Binding="{Binding Byte5,UpdateSourceTrigger=PropertyChanged}" Width="64"/>
+                            <DataGridTextColumn Header="字节6" Binding="{Binding Byte6,UpdateSourceTrigger=PropertyChanged}" Width="64"/>
+                            <DataGridTextColumn Header="字节7" Binding="{Binding Byte7,UpdateSourceTrigger=PropertyChanged}" Width="64"/>
+                            <DataGridTextColumn Header="字节8" Binding="{Binding Byte8,UpdateSourceTrigger=PropertyChanged}" Width="64"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Visibility="Collapsed">
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <TextBox Style="{StaticResource TextBoxStyle1}"
+                                 Width="240" Height="40"
+                                 Margin="-160 -100 0 0"
+                                 Text="{Binding EolPassWord,UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Button Content="{Binding EolStatus}"
+                                Style="{StaticResource IndustrialButtonStyle}"
+                                Height="40"
+                                Width="130"
+                                Margin="260 -100 0 0"
+                                Command="{Binding EnterEolCommand}"/>
+
+                        <ComboBox Style="{DynamicResource MechanicalComboBoxStyle}"
+                                  Width="400" Height="40"
+                                  MaxDropDownHeight="200"
+                                  ItemsSource="{Binding TargetControlAddres}"
+                                  SelectedValue="{Binding CurTargetControlAddres,UpdateSourceTrigger=PropertyChanged}">
+                        </ComboBox>
+                                  
+                    </Grid>
+                    
+                </Grid>
+                
+            </TabItem>
+
+
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBox Style="{StaticResource TextBoxStyle1}"
+                                 Width="240" Height="60"
+                                     FontSize="18"
+                                 Text="{Binding ControlPassWord,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Button Content="{Binding ControlModeStep}"
+                                Style="{StaticResource IndustrialButtonStyle}"
+                                Height="60"
+                                Width="150"
+                                    Margin="10 0"
+                                    FontSize="18"
+                                Command="{Binding EnterControlCommand}"/>
+
+                        </StackPanel>
+
+                        <ComboBox Style="{DynamicResource MechanicalComboBoxStyle}"
+                                  Width="400" Height="60"
+                                  MaxDropDownHeight="200"
+                                  Grid.Row="1"
+                                  FontSize="18"
+                                  ItemsSource="{Binding TargetControlAddres}"
+                                  SelectedValue="{Binding CurTargetControlAddres1,UpdateSourceTrigger=PropertyChanged}">
+                        </ComboBox>
+
+                        <GroupBox Grid.Row="2"
+                                  Style="{StaticResource MygroupboxStyle}"
+                                  Height="380" Width="400">
+                            <Grid Margin="30 30 30 10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="高边驱动1" Foreground="#4B8EC4" Grid.Row="0" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="高边驱动2" Foreground="#4B8EC4" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="高边驱动3" Foreground="#4B8EC4" Grid.Row="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="高边驱动4" Foreground="#4B8EC4" Grid.Row="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="高边驱动5" Foreground="#4B8EC4" Grid.Row="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="高边驱动6" Foreground="#4B8EC4" Grid.Row="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="高边驱动7" Foreground="#4B8EC4" Grid.Row="6" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="高边驱动8" Foreground="#4B8EC4" Grid.Row="7" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                <ToggleButton Grid.Row="0" Grid.Column="1" 
+                                              Style="{StaticResource MechanicalToggleStyle}"
+                                              x:Name="ToggleBtn1" 
+                                              Command="{Binding ChangeDeviceCommand}">
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding ElementName="ToggleBtn1" Path="IsChecked"/>
+                                                <Binding Source="0"/>
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
+                                </ToggleButton>
+
+                                <ToggleButton Grid.Row="1" Grid.Column="1" 
+                                              Style="{StaticResource MechanicalToggleStyle}"
+                                              x:Name="ToggleBtn2" 
+                                              Command="{Binding ChangeDeviceCommand}">
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding ElementName="ToggleBtn2" Path="IsChecked"/>
+                                                <Binding Source="1"/>
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
+                                </ToggleButton>
+                                <ToggleButton Grid.Row="2" Grid.Column="1" 
+                                              Style="{StaticResource MechanicalToggleStyle}"
+                                              x:Name="ToggleBtn3" 
+                                              Command="{Binding ChangeDeviceCommand}">
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding ElementName="ToggleBtn3" Path="IsChecked"/>
+                                                <Binding Source="2"/>
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
+                                </ToggleButton>
+                                <ToggleButton Grid.Row="3" Grid.Column="1" 
+                                              Style="{StaticResource MechanicalToggleStyle}"
+                                              x:Name="ToggleBtn4" 
+                                              Command="{Binding ChangeDeviceCommand}">
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding ElementName="ToggleBtn4" Path="IsChecked"/>
+                                                <Binding Source="3"/>
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
+                                </ToggleButton>
+                                <ToggleButton Grid.Row="4" Grid.Column="1" 
+                                              Style="{StaticResource MechanicalToggleStyle}"
+                                              x:Name="ToggleBtn5" 
+                                              Command="{Binding ChangeDeviceCommand}">
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding ElementName="ToggleBtn5" Path="IsChecked"/>
+                                                <Binding Source="4"/>
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
+                                </ToggleButton>
+                                <ToggleButton Grid.Row="5" Grid.Column="1" 
+                                              Style="{StaticResource MechanicalToggleStyle}"
+                                              x:Name="ToggleBtn6" 
+                                              Command="{Binding ChangeDeviceCommand}">
+
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding ElementName="ToggleBtn6" Path="IsChecked"/>
+                                                <Binding Source="5"/>
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
+                                </ToggleButton>
+                                <ToggleButton Grid.Row="6" Grid.Column="1" 
+                                              Style="{StaticResource MechanicalToggleStyle}"
+                                              x:Name="ToggleBtn7" 
+                                              Command="{Binding ChangeDeviceCommand}">
+
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding ElementName="ToggleBtn7" Path="IsChecked"/>
+                                                <Binding Source="6"/>
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
+                                </ToggleButton>
+                                <ToggleButton Grid.Row="7" Grid.Column="1" 
+                                              Style="{StaticResource MechanicalToggleStyle}"
+                                              x:Name="ToggleBtn8" 
+                                              Command="{Binding ChangeDeviceCommand}">
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding ElementName="ToggleBtn8" Path="IsChecked"/>
+                                                <Binding Source="7"/>
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
+                                </ToggleButton>
+                                
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+
+                    <DataGrid Grid.Column="1"
+                              Background="Transparent" 
+                              BorderThickness="0" 
+                              ItemsSource="{Binding HighDeviceIOStates}"
+                              AutoGenerateColumns="False"
+                              AlternationCount="2"
+                              ColumnHeaderStyle="{StaticResource DgCloumnHeader}"
+                              RowStyle="{StaticResource DataRowStyle}"
+                              SelectionChanged="DataGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="簇控高边驱动/IO状态" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="状态值" Binding="{Binding Value}"/>
+                            <DataGridTextColumn Header="单位" Binding="{Binding Unit}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Style="{StaticResource MygroupboxStyle}"
+                              Grid.Row="1" Grid.Column="1">
+                        <Grid  Margin="25 25 10 10">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="累计充电容量:" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20"/>
+                            <TextBlock Text="累计放电容量:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20"/>
+                            <TextBlock Text="累计运行时间:" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20"/>
+                            <TextBlock Text="SOH:" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20"/>
+
+                            <Border Style="{StaticResource MechanicalBorderStyle}" Grid.Column="1"
+                                    Width="130" Height="40">
+                                <TextBlock Text="123" HorizontalAlignment="Center" FontSize="20"
+                                           VerticalAlignment="Center" Foreground="Black"/>
+                            </Border>
+
+                            <Border Style="{StaticResource MechanicalBorderStyle}" Grid.Column="1"
+                                    Width="130" Height="40" Grid.Row="1">
+                                <TextBlock Text="123" HorizontalAlignment="Center" FontSize="20"
+                                           VerticalAlignment="Center" Foreground="Black"/>
+                            </Border>
+                            <Border Style="{StaticResource MechanicalBorderStyle}" Grid.Column="1"
+                                    Width="130" Height="40" Grid.Row="2">
+                                <TextBlock Text="123" HorizontalAlignment="Center" FontSize="20"
+                                           VerticalAlignment="Center" Foreground="Black"/>
+                            </Border>
+                            <Border Style="{StaticResource MechanicalBorderStyle}" Grid.Column="1"
+                                    Width="130" Height="40" Grid.Row="3">
+                                <TextBlock Text="123" HorizontalAlignment="Center" FontSize="20"
+                                           VerticalAlignment="Center" Foreground="Black"/>
+                            </Border>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MygroupboxStyle}"
+                              Grid.Row="1" Grid.Column="2">
+
+                        <Grid Margin="25 25 10 10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="累计充电容量:" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20"/>
+                            <TextBlock Text="累计放电容量:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20"/>
+                            <TextBlock Text="累计运行时间:" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20"/>
+
+                            <TextBox Style="{StaticResource TextBoxStyle2}" Grid.Column="1" 
+                                     IsEnabled="{Binding ElementName=Combobox1,Path=SelectedIndex,Converter={StaticResource selectedIndexToBooleanConverter}}"
+                                     Foreground="White" Height="40" FontSize="20"/>
+                            <TextBox Style="{StaticResource TextBoxStyle2}" Grid.Column="1"
+                                     Grid.Row="1"
+                                     IsEnabled="{Binding ElementName=Combobox1,Path=SelectedIndex,Converter={StaticResource selectedIndexToBooleanConverter}}"
+                                     Foreground="White" Height="40" FontSize="20"/>
+                            <TextBox Style="{StaticResource TextBoxStyle2}" Grid.Column="1"
+                                     Grid.Row="2"
+                                     IsEnabled="{Binding ElementName=Combobox1,Path=SelectedIndex,Converter={StaticResource selectedIndexToBooleanConverter}}"
+                                     Foreground="White" Height="40" FontSize="20"/>
+                        </Grid>
+                    </GroupBox>
+
+                    
+
+                    <ComboBox Style="{DynamicResource MechanicalComboBoxStyle1}"
+                                  Grid.Row="2" Grid.Column="1"
+                                  MaxDropDownHeight="200"
+                                  FontSize="18"
+                              x:Name="Combobox1"
+                                  ItemsSource="{Binding MainCards}"
+                              Width="360"
+                                  Height="60"
+                              SelectionChanged="DataGrid_SelectionChanged">
+                    </ComboBox>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
+                        <Button Margin="20 0 0 0" Style="{StaticResource IndustrialButtonStyle}"
+                                Height=" 60" Width="150" Content="确定执行" FontSize="16"/>
+
+                        <Button Style="{StaticResource IndustrialButtonStyle}"
+                                Height="60" Width="150" Content="取消标定" FontSize="16"
+                                Margin="43 0 0 0" Foreground="#D31F61"/>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

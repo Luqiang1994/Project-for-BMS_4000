@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\VS_Project\\BMSSoftware\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|d:\\vs_project\\bmssoftware\\bmssoftware\\views\\communityparamsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|solutionrelative:bmssoftware\\views\\communityparamsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|d:\\vs_project\\bmssoftware\\bmssoftware\\viewmodels\\communityparamsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|solutionrelative:bmssoftware\\viewmodels\\communityparamsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|d:\\vs_project\\bmssoftware\\bmssoftware\\views\\storedenergy.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|solutionrelative:bmssoftware\\views\\storedenergy.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|d:\\vs_project\\bmssoftware\\bmssoftware\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|solutionrelative:bmssoftware\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|d:\\vs_project\\bmssoftware\\bmssoftware\\devices\\cxcan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E613C97-36E3-4D2F-A7C6-681D3905C7E6}|BMSSoftware\\BMSSoftware.csproj|solutionrelative:bmssoftware\\devices\\cxcan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StoredEnergy.xaml",
+              "DocumentMoniker": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\Views\\StoredEnergy.xaml",
+              "RelativeDocumentMoniker": "BMSSoftware\\Views\\StoredEnergy.xaml",
+              "ToolTip": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\Views\\StoredEnergy.xaml",
+              "RelativeToolTip": "BMSSoftware\\Views\\StoredEnergy.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-13T04:41:43.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "BMSSoftware\\Views\\MainWindow.xaml",
+              "ToolTip": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "BMSSoftware\\Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-13T04:41:40.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CXcan.cs",
+              "DocumentMoniker": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\Devices\\CXcan.cs",
+              "RelativeDocumentMoniker": "BMSSoftware\\Devices\\CXcan.cs",
+              "ToolTip": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\Devices\\CXcan.cs",
+              "RelativeToolTip": "BMSSoftware\\Devices\\CXcan.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAuwIQAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T04:08:07.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CommunityParamsView.xaml",
+              "DocumentMoniker": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\Views\\CommunityParamsView.xaml",
+              "RelativeDocumentMoniker": "BMSSoftware\\Views\\CommunityParamsView.xaml",
+              "ToolTip": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\Views\\CommunityParamsView.xaml",
+              "RelativeToolTip": "BMSSoftware\\Views\\CommunityParamsView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-13T04:03:35.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CommunityParamsViewModel.cs",
+              "DocumentMoniker": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\ViewModels\\CommunityParamsViewModel.cs",
+              "RelativeDocumentMoniker": "BMSSoftware\\ViewModels\\CommunityParamsViewModel.cs",
+              "ToolTip": "D:\\VS_Project\\BMSSoftware\\BMSSoftware\\ViewModels\\CommunityParamsViewModel.cs",
+              "RelativeToolTip": "BMSSoftware\\ViewModels\\CommunityParamsViewModel.cs",
+              "ViewState": "AgIAAFECAAAAAAAAAAAUwHECAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T04:04:55.867Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
