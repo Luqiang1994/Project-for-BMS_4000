@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system ="clr-namespace:System;assembly=mscorlib">
+    
+    <!--CAN通讯设置-->
+    <system:String x:Key="CanConnect">CanConn</system:String>
+    <system:String x:Key="CanDeviceType">DeviceType:</system:String>
+    <system:String x:Key="CanDeviceIndex">DeviceIndex:</system:String>
+    <system:String x:Key="CanChannelIndex">ChannelIndex:</system:String>
+    <system:String x:Key="CanAcceptCode">AcceptCode:0x</system:String>
+    <system:String x:Key="CanBlockCode">BlockCode:0x</system:String>
+    <system:String x:Key="CanTimer0">Timer0:0x</system:String>
+    <system:String x:Key="CanTimer1">Timer1:0x</system:String>
+    <system:String x:Key="CanFilterMode">FilterMode:</system:String>
+    <system:String x:Key="CanMode">Mode:</system:String>
+    <system:String x:Key="btnCanConnect">Connect</system:String>
+    <system:String x:Key="btnCanDisConnect">DisConnect</system:String>
+    
+</ResourceDictionary>

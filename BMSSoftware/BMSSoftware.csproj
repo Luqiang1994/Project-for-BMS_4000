@@ -38,6 +38,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Languages.Sources\Languages.Sources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="fonts\iconfont.ttf" />
     <Resource Include="fonts\iconfont1.ttf" />
     <Resource Include="fonts\iconfont2.ttf" />

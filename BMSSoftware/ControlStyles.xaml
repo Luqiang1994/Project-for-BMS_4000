@@ -1557,4 +1557,109 @@
         </Setter>
     </Style>
 
+
+
+    <!-- 1. 定义颜色资源 (方便统一管理) -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="#00D4FF"/>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#1A1A2E"/>
+    <SolidColorBrush x:Key="TextBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="InactiveBrush" Color="#4A4A6A"/>
+    <Style x:Key="LanguageToggleStyle" TargetType="ToggleButton">
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <!-- 背景边框 -->
+                        <Border x:Name="PART_Border"
+                                    Background="{StaticResource BackgroundBrush}"
+                                    BorderBrush="{StaticResource PrimaryBrush}"
+                                    BorderThickness="1.5"
+                                    CornerRadius="20">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#00D4FF" 
+                                                      BlurRadius="10" 
+                                                      ShadowDepth="0" 
+                                                      Opacity="0.5"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- 滑块 -->
+                        <Border x:Name="PART_Slider"
+                                    Width="58"
+                                    Height="34"
+                                    HorizontalAlignment="Left"
+                                    Margin="3"
+                                    Background="{StaticResource PrimaryBrush}"
+                                    CornerRadius="17">
+                            <Border.RenderTransform>
+                                <TranslateTransform x:Name="SliderTransform"/>
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <!-- 文字 -->
+                        <StackPanel Orientation="Horizontal" 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                            <TextBlock x:Name="TxtCN" 
+                                           Text="中" 
+                                           Foreground="{StaticResource TextBrush}"
+                                           FontSize="14" 
+                                           FontWeight="Bold"
+                                           Margin="8,0,0,0"/>
+                            <TextBlock x:Name="TxtEN" 
+                                           Text="EN" 
+                                           Foreground="{StaticResource InactiveBrush}"
+                                           FontSize="14" 
+                                           FontWeight="Bold"
+                                           Margin="20,0,8,0"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="SliderTransform"
+                                                             Storyboard.TargetProperty="X"
+                                                             To="58"
+                                                             Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="SliderTransform"
+                                                             Storyboard.TargetProperty="X"
+                                                             To="0"
+                                                             Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="TxtCN" Property="Foreground" Value="{StaticResource InactiveBrush}"/>
+                            <Setter TargetName="TxtEN" Property="Foreground" Value="{StaticResource TextBrush}"/>
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Border" Property="BorderThickness" Value="2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

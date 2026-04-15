@@ -12,9 +12,9 @@
 
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
-
+                <ResourceDictionary Source="pack://application:,,,/Languages.Sources;component/Chinese.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

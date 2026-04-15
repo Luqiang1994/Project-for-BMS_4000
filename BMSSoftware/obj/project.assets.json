@@ -79,6 +79,19 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "Languages.Sources/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Languages.Sources.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Languages.Sources.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       }
     }
   },
@@ -315,12 +328,18 @@
         "system.runtime.compilerservices.unsafe.6.1.0.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec"
       ]
+    },
+    "Languages.Sources/1.0.0": {
+      "type": "project",
+      "path": "../Languages.Sources/Languages.Sources.csproj",
+      "msbuildProject": "../Languages.Sources/Languages.Sources.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "CommunityToolkit.Mvvm >= 8.4.0",
       "HandyControl >= 3.5.1",
+      "Languages.Sources >= 1.0.0",
       "Microsoft.Xaml.Behaviors.Wpf >= 1.1.135"
     ]
   },
@@ -350,7 +369,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\GitHub_Projects\\TempPressMoveControl\\Languages.Sources\\Languages.Sources.csproj": {
+              "projectPath": "D:\\GitHub_Projects\\TempPressMoveControl\\Languages.Sources\\Languages.Sources.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

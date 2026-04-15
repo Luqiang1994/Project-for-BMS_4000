@@ -31,7 +31,7 @@
 
                 <TabControl Grid.Row="1" Style="{StaticResource NewTabControlStyle}"
                             Width="480" Height="430" Background="Transparent">
-                    <TabItem Header="Can通讯" Style="{DynamicResource NewTabItemStyle}">
+                    <TabItem Header="{DynamicResource CanConnect}" Style="{DynamicResource NewTabItemStyle}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -50,28 +50,28 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="设备类型:" Foreground="White"
+                            <TextBlock Text="{DynamicResource CanDeviceType}" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0"/>
-                            <TextBlock Text="设备索引:" Foreground="White"
+                            <TextBlock Text="{DynamicResource CanDeviceIndex}" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="1"/>
-                            <TextBlock Text="通道号:" Foreground="White"
+                            <TextBlock Text="{DynamicResource CanChannelIndex}" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="2"/>
-                            <TextBlock Text="验收码:0x1" Foreground="White"
+                            <TextBlock Text="{DynamicResource CanAcceptCode}" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="3"/>
-                            <TextBlock Text="屏蔽码:0x" Foreground="White"
+                            <TextBlock Text="{DynamicResource CanBlockCode}" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="4"/>
-                            <TextBlock Text="定时器0:0x" Foreground="White"
+                            <TextBlock Text="{DynamicResource CanTimer0}" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="5"/>
-                            <TextBlock Text="定时器1:0x" Foreground="White"
+                            <TextBlock Text="{DynamicResource CanTimer1}" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="6"/>
-                            <TextBlock Text="滤波方式:" Foreground="White"
+                            <TextBlock Text="{DynamicResource CanFilterMode}" Foreground="White"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="0 0 20 0" Grid.Row="7"/>
 
@@ -177,7 +177,7 @@
 
                             <TextBlock Grid.Row="8" HorizontalAlignment="Right" Margin="0 0 20 0"
                                         Foreground="White" VerticalAlignment="Center"
-                                       Text="模式:"/>
+                                       Text="{DynamicResource CanMode}"/>
                             <ComboBox Style="{DynamicResource MechanicalComboBoxStyle2}"
       Width="180" HorizontalAlignment="Left" Margin="0 5"
       MaxDropDownHeight="200"
@@ -189,14 +189,14 @@
                                 <ComboBoxItem Content="自测"/>
                             </ComboBox>
 
-                            <Button Grid.Row="9" Content="连    接"
+                            <Button Grid.Row="9" Content="{DynamicResource btnCanConnect}"
                                     Style="{StaticResource IndustrialButtonStyle}"
                                     Width="100" FontSize="14" Padding="15 0"
                                     Margin="0 0 -95 0"
                                     Command="{Binding ConnectCanCommand}"
                                     CommandParameter="连接"/>
 
-                            <Button Grid.Row="9"  Grid.Column="1" Content="断    开"
+                            <Button Grid.Row="9"  Grid.Column="1" Content="{DynamicResource btnCanDisConnect}"
                                     Style="{StaticResource IndustrialButtonStyle}"
                                     Width="100" FontSize="14" Padding="15 0"
                                     Foreground="#D05C5C"
@@ -207,7 +207,7 @@
                         
                     </TabItem>
 
-                    <TabItem Header="串口通讯(暂无)" Style="{DynamicResource NewTabItemStyle}">
+                    <TabItem Header="串口通讯" Style="{DynamicResource NewTabItemStyle}">
 
                     </TabItem>
                 </TabControl>

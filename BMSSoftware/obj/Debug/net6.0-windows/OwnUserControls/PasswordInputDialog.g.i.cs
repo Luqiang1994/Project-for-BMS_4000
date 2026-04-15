@@ -77,7 +77,7 @@ namespace BMSSoftware.OwnUserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BMSSoftware;V1.0.0.0;component/ownusercontrols/passwordinputdialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BMSSoftware;component/ownusercontrols/passwordinputdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\OwnUserControls\PasswordInputDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

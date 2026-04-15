@@ -1,4 +1,5 @@
-﻿using BMSSoftware.ViewModels;
+﻿using BMSSoftware.Helpers;
+using BMSSoftware.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,6 +39,16 @@ namespace BMSSoftware.Views
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void LangToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            if (LangToggle.IsChecked == true)
+            {
+                ChangeInfo.Service.ChangeLanguagePublish("English");
+            }
+            else
+                ChangeInfo.Service.ChangeLanguagePublish("Chinese");
         }
     }
 }

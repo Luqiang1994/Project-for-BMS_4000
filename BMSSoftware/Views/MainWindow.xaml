@@ -63,6 +63,15 @@
                      Margin="45 0 0 0"
                      Fill="{Binding BMSState}"/>
 
+            <ToggleButton x:Name="LangToggle"
+                      Style="{StaticResource LanguageToggleStyle}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Checked="LangToggle_Checked"
+                          Margin="250 0 0 0"
+                      Unchecked="LangToggle_Checked"
+                          />
+
             <Button x:Name="CloseApp"
                 Style="{StaticResource ExitApp}"
                     Click="CloseApp_Click"/>
